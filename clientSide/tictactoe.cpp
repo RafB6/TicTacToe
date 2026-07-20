@@ -24,6 +24,7 @@ int main(void) {
     // NINE SUBFIELDS
     sf::RectangleShape topLeft({FIELD_HEIGHT, FIELD_WIDTH});
 
+    
     sf::RectangleShape topCenter({FIELD_HEIGHT, FIELD_WIDTH});
     sf::RectangleShape topRight({FIELD_HEIGHT, FIELD_WIDTH});
     sf::RectangleShape middleRight({FIELD_HEIGHT, FIELD_WIDTH});
