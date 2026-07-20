@@ -1,0 +1,17 @@
+TIC TAC TOE notes.
+
+Basic idea -> 9 fields recognizing input.
+Input type changing after each click.
+Let each field have a 'value' property.
+Keep move count, after 3 look for a winner combination, if non found -> continue the game
+
+Fields should be separated into
+
+  TOP LEFT  |  TOP CENTER   |  TOP RIGHT
+------------------------------------------
+MIDDLE LEFT | MIDDLE CENTER | MIDDLE RIGHT
+------------------------------------------
+BOTTOM LEFT | BOTTOM CENTER | BOTTOM RIGHT
+
+and name using camelCase.
+
