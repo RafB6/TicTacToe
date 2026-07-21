@@ -37,7 +37,7 @@ int TicTacToe::hasWinner() {
     if(this->logicBoard[TOP][LEFT] == Xmark && this->logicBoard[TOP][CENTER] == Xmark && this->logicBoard[TOP][RIGHT] == Xmark) return Xmark;
     if(this->logicBoard[MIDDLE][LEFT] == Xmark && this->logicBoard[MIDDLE][CENTER] == Xmark && this->logicBoard[MIDDLE][RIGHT] == Xmark) return Xmark;
     if(this->logicBoard[BOTTOM][LEFT] == Xmark && this->logicBoard[BOTTOM][CENTER] == Xmark && this->logicBoard[BOTTOM][RIGHT] == Xmark) return Xmark;
-    if(this->logicBoard[TOP][LEFT] == Xmark && this->logicBoard[MIDDLE][LEFT] == Xmark && this->logicBoard[BOTTOM][RIGHT] == Xmark) return Xmark;
+    if(this->logicBoard[TOP][LEFT] == Xmark && this->logicBoard[MIDDLE][LEFT] == Xmark && this->logicBoard[BOTTOM][LEFT] == Xmark) return Xmark;
     if(this->logicBoard[TOP][CENTER] == Xmark && this->logicBoard[MIDDLE][CENTER] == Xmark && this->logicBoard[BOTTOM][CENTER] == Xmark) return Xmark;
     if(this->logicBoard[TOP][RIGHT] == Xmark && this->logicBoard[MIDDLE][RIGHT] == Xmark && this->logicBoard[BOTTOM][RIGHT] == Xmark) return Xmark;
     if(this->logicBoard[TOP][LEFT] == Xmark && this->logicBoard[MIDDLE][CENTER] == Xmark && this->logicBoard[BOTTOM][RIGHT] == Xmark) return Xmark;
@@ -46,7 +46,7 @@ int TicTacToe::hasWinner() {
     if(this->logicBoard[TOP][LEFT] == Omark && this->logicBoard[TOP][CENTER] == Omark && this->logicBoard[TOP][RIGHT] == Omark) return Omark;
     if(this->logicBoard[MIDDLE][LEFT] == Omark && this->logicBoard[MIDDLE][CENTER] == Omark && this->logicBoard[MIDDLE][RIGHT] == Omark) return Omark;
     if(this->logicBoard[BOTTOM][LEFT] == Omark && this->logicBoard[BOTTOM][CENTER] == Omark && this->logicBoard[BOTTOM][RIGHT] == Omark) return Omark;
-    if(this->logicBoard[TOP][LEFT] == Omark && this->logicBoard[MIDDLE][LEFT] == Omark && this->logicBoard[BOTTOM][RIGHT] == Omark) return Omark;
+    if(this->logicBoard[TOP][LEFT] == Omark && this->logicBoard[MIDDLE][LEFT] == Omark && this->logicBoard[BOTTOM][LEFT] == Omark) return Omark;
     if(this->logicBoard[TOP][CENTER] == Omark && this->logicBoard[MIDDLE][CENTER] == Omark && this->logicBoard[BOTTOM][CENTER] == Omark) return Omark;
     if(this->logicBoard[TOP][RIGHT] == Omark && this->logicBoard[MIDDLE][RIGHT] == Omark && this->logicBoard[BOTTOM][RIGHT] == Omark) return Omark;
     if(this->logicBoard[TOP][LEFT] == Omark && this->logicBoard[MIDDLE][CENTER] == Omark && this->logicBoard[BOTTOM][RIGHT] == Omark) return Omark;

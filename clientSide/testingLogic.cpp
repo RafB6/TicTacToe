@@ -41,6 +41,7 @@ int main(void) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Wrong input, try again: ";
         }
+
         //MAKE MOVE
         if (movesMade % 2 == 0) game.setFieldState(newHorizontal,newVertical,Xmark);
         else game.setFieldState(newHorizontal,newVertical,Omark);
@@ -48,14 +49,13 @@ int main(void) {
         //PRINT BOARD
         game.printBoard();
 
-
         //CHECK WINNER
         char currField = game.getFieldState(newHorizontal,newVertical) == Xmark ? 'X': 'O';
         if (game.hasWinner()) game.setWinner(currField);
-        
+    
         std::cout << "\n";
     }    
-    std::cout << movesMade << std::endl;
+    std::cout << "Moves made in this match: " << movesMade << std::endl;
     std::cout << "The winner is: " << game.getWinner() << std::endl;
     
     return 0;
