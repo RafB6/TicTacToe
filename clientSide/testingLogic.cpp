@@ -43,9 +43,7 @@ int main(void) {
         }
 
         //MAKE MOVE
-        if (movesMade % 2 == 0) game.setFieldState(newHorizontal,newVertical,Xmark);
-        else game.setFieldState(newHorizontal,newVertical,Omark);
-        
+        game.makeMove(newHorizontal, newVertical);
         //PRINT BOARD
         game.printBoard();
 

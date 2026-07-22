@@ -33,6 +33,11 @@ void TicTacToe::setFieldState(int x, int y, int newState) {
 int TicTacToe::getMoveCount() {
     return moveCount;
 }
+void TicTacToe::makeMove(int x, int y) {
+    int movesMade = this->getMoveCount();
+    int symbol = ((movesMade % 2)) ? Xmark : Omark;
+    this->setFieldState(x, y, symbol);
+}
 int TicTacToe::hasWinner() {
     if(this->logicBoard[TOP][LEFT] == Xmark && this->logicBoard[TOP][CENTER] == Xmark && this->logicBoard[TOP][RIGHT] == Xmark) return Xmark;
     if(this->logicBoard[MIDDLE][LEFT] == Xmark && this->logicBoard[MIDDLE][CENTER] == Xmark && this->logicBoard[MIDDLE][RIGHT] == Xmark) return Xmark;
@@ -67,9 +72,9 @@ void TicTacToe::printBoard() {
         for (int j = 0; j < 3; j++) {
             int currState = this->getFieldState(i,j);
             char symbol;
-            if (!currState) symbol = '_';
-            else if (currState == 1) symbol = 'X';
-            else if (currState == 2) symbol = 'O';
+            if (currState == EMPTY) symbol = '_';
+            else if (currState == Xmark) symbol = 'X';
+            else if (currState == Omark) symbol = 'O';
             std::cout << symbol << "\t";
         }
         std::cout << std::endl;
