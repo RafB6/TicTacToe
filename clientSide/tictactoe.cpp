@@ -2,43 +2,65 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include "gameClass.hpp"
 
-#define WINDOW_HEIGHT 600
+#define WINDOW_HEIGHT 800
 #define WINDOW_WIDTH 800
-#define FIELD_HEIGHT 200
-#define FIELD_WIDTH 200
+
+const float FIELD_HEIGHT = 200.f;
+const float FIELD_WIDTH = 200.f;
+
+sf::RectangleShape createField();
+
+
 
 int main(void) {
-
+    
     //window render
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "TIC TAC TOE");
     
     //Frame limit
     window.setFramerateLimit(10);
-
-    //OBJECTS
-    //Board
-    sf::RectangleShape Board({600.f, 600.f});
-    Board.setFillColor(sf::Color::Blue);
-    
-    // NINE SUBFIELDS
-    sf::RectangleShape topLeft({FIELD_HEIGHT, FIELD_WIDTH});
-
-    
-    sf::RectangleShape topCenter({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape topRight({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape middleRight({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape middleCenter({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape middleLeft({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape bottomRight({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape bottomCenter({FIELD_HEIGHT, FIELD_WIDTH});
-    sf::RectangleShape bottomLeft({FIELD_HEIGHT, FIELD_WIDTH});
-    //TO BE SEPARATED TO A DIFFERENT FILE 
     
     //Cursor, why not
     sf::Cursor cursor;
     if (cursor.loadFromSystem(sf::Cursor::Hand)) window.setMouseCursor(cursor);
     
+    //OBJECTS
+    
+    //Board
+    sf::RectangleShape Board({WINDOW_WIDTH, WINDOW_HEIGHT});
+    Board.setFillColor(sf::Color::Blue);
+
+    
+    // NINE FIELDS
+    sf::RectangleShape topLeft = createField();
+    topLeft.setPosition(FIELD_WIDTH * 0.5, FIELD_HEIGHT * 0.5);
+
+    sf::RectangleShape topCenter = createField();
+    topCenter.setPosition(FIELD_WIDTH * 1.5, FIELD_HEIGHT * 0.5);
+
+    sf::RectangleShape topRight = createField();
+    topRight.setPosition(FIELD_WIDTH * 2.5, FIELD_HEIGHT * 0.5);
+
+    sf::RectangleShape middleLeft = createField();
+    middleLeft.setPosition(FIELD_WIDTH * 0.5, FIELD_HEIGHT * 1.5);
+
+    sf::RectangleShape middleCenter = createField();
+    middleCenter.setPosition(FIELD_WIDTH * 1.5, FIELD_HEIGHT * 1.5);
+
+    sf::RectangleShape middleRight = createField();
+    middleRight.setPosition(2.5 * FIELD_WIDTH, FIELD_HEIGHT * 1.5);
+
+    sf::RectangleShape bottomLeft = createField();
+    bottomLeft.setPosition(FIELD_WIDTH * 0.5, 2.5 * FIELD_HEIGHT);
+
+    sf::RectangleShape bottomCenter = createField();
+    bottomCenter.setPosition(FIELD_WIDTH * 1.5, 2.5 * FIELD_HEIGHT);
+
+    sf::RectangleShape bottomRight = createField();
+    bottomRight.setPosition(2.5 * FIELD_WIDTH, 2.5 * FIELD_HEIGHT);
+    //TO BE SEPARATED TO A DIFFERENT FILE 
 
     //THE LOOP
     while (window.isOpen()) {
@@ -50,12 +72,19 @@ int main(void) {
             //handling of closing the game
             if (event.type == sf::Event::Closed) window.close();
 
-            
-
         }
 
         window.clear(sf::Color::White);
         window.draw(Board);
+        window.draw(topLeft);
+        window.draw(topCenter);
+        window.draw(topRight);
+        window.draw(middleLeft);
+        window.draw(middleCenter);
+        window.draw(middleRight);
+        window.draw(bottomLeft);
+        window.draw(bottomCenter);
+        window.draw(bottomRight);
         window.display();
     }
 }
@@ -64,4 +93,8 @@ int main(void) {
 sf::RectangleShape createField() {
     sf::RectangleShape field({FIELD_HEIGHT, FIELD_WIDTH});
     field.setOutlineColor(sf::Color::Black);
+    field.setOutlineThickness(1.f);
+    field.setFillColor(sf::Color::Magenta);
+
+    return field;
 }
