@@ -14,7 +14,7 @@ class TicTacToe {
         int getFieldState(int x, int y);
         void setFieldState(int x, int y, int newState);
         int getMoveCount();
-        void makeMove(int x, int y);
+        bool makeMove(int x, int y);
         int hasWinner();
         void setWinner(char winner);
         char getWinner();

@@ -33,10 +33,14 @@ void TicTacToe::setFieldState(int x, int y, int newState) {
 int TicTacToe::getMoveCount() {
     return moveCount;
 }
-void TicTacToe::makeMove(int x, int y) {
+bool TicTacToe::makeMove(int x, int y) {
+    int movesBefore = this->getMoveCount();
+    int stateBefore = this->getFieldState(x,y);
+    this->updateMoveCount();
     int movesMade = this->getMoveCount();
     int symbol = ((movesMade % 2)) ? Xmark : Omark;
     this->setFieldState(x, y, symbol);
+    return (movesBefore != this->getMoveCount() && stateBefore != this->getFieldState(x,y));
 }
 int TicTacToe::hasWinner() {
     if(this->logicBoard[TOP][LEFT] == Xmark && this->logicBoard[TOP][CENTER] == Xmark && this->logicBoard[TOP][RIGHT] == Xmark) return Xmark;
