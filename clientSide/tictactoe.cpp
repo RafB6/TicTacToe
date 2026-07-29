@@ -77,8 +77,8 @@ int main(void) {
     //TEXT OBJECT ARRAY
     std::vector<std::vector<sf::Text>> Symbols(3, std::vector<sf::Text>(3));
     
-    sf::Text endMessage;
-    sf::RectangleShape messageBackground;
+    sf::Text winnerDeclarationMessage;
+    sf::RectangleShape winnerDeclarationBackground;
     sf::RectangleShape scoreboardBG;
     sf::Text scoreboardText;
 
@@ -124,22 +124,20 @@ int main(void) {
                     }
                     //HANDLING OF THE END OF THE GAME
                     int winner = GAME.hasWinner();
-                    if (winner) {
+                    if (winner) {                        
                         if (winner == Xmark) GAME.updateXwins();
                         else if (winner == Omark) GAME.updateOwins();
-
-                        messageBackground = createMessageBackground();
-                        endMessage = createEndMessage(winner, &messageBackground, font);
+                        winnerDeclarationBackground = createMessageBackground();
+                        winnerDeclarationMessage = createEndMessage(winner, &winnerDeclarationBackground, font);
                     } else {
-                        messageBackground = sf::RectangleShape({0.f, 0.f});
-                        endMessage = createEndMessage(EMPTY, &messageBackground, font);
+                        winnerDeclarationBackground = sf::RectangleShape({0.f, 0.f});
+                        winnerDeclarationMessage = createEndMessage(EMPTY, &winnerDeclarationBackground, font);
                     }
                 }
                 if (event.mouseButton.button == sf::Mouse::Right) {
                     std::cout << "New game" << std::endl;
-                    // EMPTY THE BOARD
-                    GAME = TicTacToe();
-                    endMessage.setString("");
+                    GAME.clearBoard();
+                    winnerDeclarationMessage.setString("");
                 }
                 Symbols = updateExistingFields(Symbols, &GAME);
             }
@@ -155,9 +153,9 @@ int main(void) {
                 window.draw(Symbols[hori][vert]);
             }
         }
-        if (endMessage.getString() != "") {
-            window.draw(messageBackground);
-            window.draw(endMessage);
+        if (winnerDeclarationMessage.getString() != "") {
+            window.draw(winnerDeclarationBackground);
+            window.draw(winnerDeclarationMessage);
         }
         window.draw(scoreboardBG);
         window.draw(scoreboardText);
