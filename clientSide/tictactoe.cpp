@@ -125,8 +125,8 @@ int main(void) {
                     //HANDLING OF THE END OF THE GAME
                     int winner = GAME.hasWinner();
                     if (winner) {
-                        if (winner == 1) GAME.updateXwins();
-                        else if (winner == 2) GAME.updateOwins();
+                        if (winner == Xmark) GAME.updateXwins();
+                        else if (winner == Omark) GAME.updateOwins();
 
                         messageBackground = createMessageBackground();
                         endMessage = createEndMessage(winner, &messageBackground, font);
