@@ -6,6 +6,8 @@ class TicTacToe {
         u_int32_t width = 3;
         u_int32_t height = 3;
         u_int32_t moveCount = 0;
+        u_int32_t Xwins = 0;
+        u_int32_t Owins = 0;
         char winner = 'n';
     public:
         enum fieldState {EMPTY, Xmark, Omark};
@@ -19,4 +21,8 @@ class TicTacToe {
         void setWinner(char winner);
         char getWinner();
         void printBoard();
+        void updateXwins();
+        void updateOwins();
+        int getXwins();
+        int getOwins();
 };

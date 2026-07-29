@@ -71,6 +71,14 @@ char TicTacToe::getWinner() {
     return this->winner;
 }
 
+void TicTacToe::updateOwins() {
+    this->Owins++;
+}
+
+void TicTacToe::updateXwins() {
+    this->Xwins++;
+}
+
 void TicTacToe::printBoard() {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -83,4 +91,12 @@ void TicTacToe::printBoard() {
         }
         std::cout << std::endl;
     }
+}
+
+int TicTacToe::getOwins() {
+    return this->Owins;
+}
+
+int TicTacToe::getXwins() {
+    return this->Xwins;
 }
