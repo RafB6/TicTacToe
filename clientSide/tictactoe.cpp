@@ -16,7 +16,7 @@ int main(void) {
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "TIC TAC TOE", sf::Style::Titlebar | sf::Style::Close);
     
     sf::Font font;
-    font.loadFromFile("Arial.ttf");
+    font.loadFromFile("fonts/Arial.ttf");
     
     //Frame limit
     window.setFramerateLimit(10);
@@ -99,7 +99,7 @@ int main(void) {
                     int xClick = event.mouseButton.x;
                     int yClick = event.mouseButton.y;
                     std::cout << "\t Mouse LEFT pressed: X: " << xClick << "\t"<< yClick << "\n";
-                    
+
                     for (int x = 0; x < BOARD_FIELDS_X; x++) {
                         for (int y = 0; y < BOARD_FIELDS_Y; y++) {
                             
@@ -129,6 +129,7 @@ int main(void) {
                         else if (winner == Omark) GAME.updateOwins();
                         winnerDeclarationBackground = createMessageBackground();
                         winnerDeclarationMessage = createEndMessage(winner, &winnerDeclarationBackground, font);
+                        GAME.clearBoard();
                     } else {
                         winnerDeclarationBackground = sf::RectangleShape({0.f, 0.f});
                         winnerDeclarationMessage = createEndMessage(EMPTY, &winnerDeclarationBackground, font);
