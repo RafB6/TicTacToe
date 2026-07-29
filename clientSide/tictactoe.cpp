@@ -4,29 +4,7 @@
 #include <math.h>
 #include "gameClass.hpp"
 #include "helperFunctions.hpp"
-
-//VERTICALS
-#define TOP 0
-#define MIDDLE 1
-#define BOTTOM 2
-
-// HORIZONTALS
-#define LEFT 0
-#define CENTER 1
-#define RIGHT 2
-
-#define BOARD_FIELDS_X 3
-#define BOARD_FIELDS_Y 3
-
-//FIELD STATE
-#define EMPTY 0
-#define Xmark 1
-#define Omark 2
-
-#define FONT_SIZE 80
-
-#define WINDOW_HEIGHT 800
-#define WINDOW_WIDTH 800
+#include "definitions.cpp"
 
 const float FIELD_HEIGHT = 200.f;
 const float FIELD_WIDTH = 200.f;
@@ -49,7 +27,7 @@ int main(void) {
     
     //Board
     sf::RectangleShape Board({WINDOW_WIDTH, WINDOW_HEIGHT});
-    Board.setFillColor(sf::Color::White);
+    Board.setFillColor(sf::Color::Black);
 
     //GAME
     TicTacToe GAME;
@@ -98,7 +76,11 @@ int main(void) {
 
     //TEXT OBJECT ARRAY
     std::vector<std::vector<sf::Text>> Symbols(3, std::vector<sf::Text>(3));
-
+    
+    sf::Text endMessage;
+    sf::RectangleShape messageBackground;
+    sf::RectangleShape scoreboardBG;
+    sf::Text scoreboardText;
 
     //THE LOOP
     while (window.isOpen()) {
@@ -112,7 +94,7 @@ int main(void) {
 
             //handling of Mouse Clicks
             if (event.type == sf::Event::MouseButtonPressed) {
-
+                //handling of LMB
                 if(event.mouseButton.button == sf::Mouse::Left) {
                     int xClick = event.mouseButton.x;
                     int yClick = event.mouseButton.y;
@@ -129,23 +111,40 @@ int main(void) {
                                 
                                 if (GAME.makeMove(x,y)) {
 
-                                    std::cout << "MOVE MADE!!!" << std::endl;
+                                    std::cout << "\tMOVE MADE!!!" << std::endl;
 
                                     int nextSymbol = (GAME.getMoveCount() % 2) ? Xmark : Omark;
 
                                     Symbols[x][y] = createTextOnField(nextSymbol, currField, font);
                                     
-                                    //HANDLING OF THE END OF THE GAME
-                                    if (GAME.hasWinner()) {
-                                        
-                                    }
-
+                                    
                                 } else std::cout << "Clicked onto non-empty FIELD" << std::endl;
                             }
                         }    
                     }
+                    //HANDLING OF THE END OF THE GAME
+                    int winner = GAME.hasWinner();
+                    if (winner) {
+                        if (winner == 1) GAME.updateXwins();
+                        else if (winner == 2) GAME.updateOwins();
+
+                        messageBackground = createMessageBackground();
+                        endMessage = createEndMessage(winner, &messageBackground, font);
+                    } else {
+                        messageBackground = sf::RectangleShape({0.f, 0.f});
+                        endMessage = createEndMessage(EMPTY, &messageBackground, font);
+                    }
                 }
+                if (event.mouseButton.button == sf::Mouse::Right) {
+                    std::cout << "New game" << std::endl;
+                    // EMPTY THE BOARD
+                    GAME = TicTacToe();
+                    endMessage.setString("");
+                }
+                Symbols = updateExistingFields(Symbols, &GAME);
             }
+            scoreboardBG = createScoreboardBackground();
+            scoreboardText = createScoreboardText(GAME, font, scoreboardBG);
         }
         
         window.clear(sf::Color::Black);
@@ -153,18 +152,15 @@ int main(void) {
         for (int hori = 0; hori < BOARD_FIELDS_X; hori++) {
             for (int vert = 0; vert < BOARD_FIELDS_Y; vert++) {
                 window.draw(Fields[hori][vert]);
-            }
-        }
-        for (int hori = 0; hori < BOARD_FIELDS_X; hori++) {
-            for (int vert = 0; vert < BOARD_FIELDS_Y; vert++) {
                 window.draw(Symbols[hori][vert]);
             }
         }
-
+        if (endMessage.getString() != "") {
+            window.draw(messageBackground);
+            window.draw(endMessage);
+        }
+        window.draw(scoreboardBG);
+        window.draw(scoreboardText);
         window.display();
     }
 }
-
-
-
-
