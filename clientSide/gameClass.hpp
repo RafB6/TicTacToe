@@ -25,4 +25,5 @@ class TicTacToe {
         void updateOwins();
         int getXwins();
         int getOwins();
+        void clearBoard();
 };

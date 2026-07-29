@@ -100,3 +100,8 @@ int TicTacToe::getOwins() {
 int TicTacToe::getXwins() {
     return this->Xwins;
 }
+
+void TicTacToe::clearBoard() {
+    std::vector<std::vector<int>> newLogicBoard(3, std::vector<int>(3,0));
+    this->logicBoard = newLogicBoard;
+}
