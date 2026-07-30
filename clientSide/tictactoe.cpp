@@ -76,9 +76,11 @@ int main(void) {
 
     //TEXT OBJECT ARRAY
     std::vector<std::vector<sf::Text>> Symbols(3, std::vector<sf::Text>(3));
-    
-    sf::Text winnerDeclarationMessage;
+
+    // VISUAL OBJECTS
     sf::RectangleShape winnerDeclarationBackground;
+    sf::Text winnerDeclarationMessage;
+    
     sf::RectangleShape scoreboardBG;
     sf::Text scoreboardText;
 
@@ -139,12 +141,13 @@ int main(void) {
                         winnerDeclarationMessage = createEndMessage(EMPTY, &winnerDeclarationBackground, font);
                     }
                 }
+                //HANDLING OF RMB
                 if (event.mouseButton.button == sf::Mouse::Right) {
                     std::cout << "New game" << std::endl;
                     GAME.clearBoard();
                     winnerDeclarationMessage.setString("");
                 }
-                Symbols = updateExistingFields(Symbols, &GAME);
+                Symbols = updateExistingFields(Symbols, GAME);
             }
             scoreboardBG = createScoreboardBackground();
             scoreboardText = createScoreboardText(GAME, font, scoreboardBG);
@@ -152,12 +155,15 @@ int main(void) {
         
         window.clear(sf::Color::Black);
         window.draw(Board);
+
+        //DISPLAY FIELD AND ASSIGN A SYMBOL TO IT
         for (int hori = 0; hori < BOARD_FIELDS_X; hori++) {
             for (int vert = 0; vert < BOARD_FIELDS_Y; vert++) {
                 window.draw(Fields[hori][vert]);
                 window.draw(Symbols[hori][vert]);
             }
         }
+        // DISPLAY WINNING MESSAGE IF THERE'S A WINNER
         if (winnerDeclarationMessage.getString() != "") {
             window.draw(winnerDeclarationBackground);
             window.draw(winnerDeclarationMessage);

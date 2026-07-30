@@ -13,7 +13,7 @@ const float FIELD_WIDTH = 200.f;
 sf::RectangleShape createField() {
     sf::RectangleShape field({FIELD_HEIGHT, FIELD_WIDTH});
     field.setOutlineColor(sf::Color::Blue);
-    field.setOutlineThickness(1.f);
+    field.setOutlineThickness(5.f);
     field.setFillColor(sf::Color::Black);
     
     return field;
@@ -70,12 +70,12 @@ sf::Text createEndMessage(int winner, sf::RectangleShape *messageBackground, con
     return winnerMessage;
 }
 
-std::vector<std::vector<sf::Text>> updateExistingFields(std::vector<std::vector<sf::Text>> Symbols, TicTacToe *currGame) {
+std::vector<std::vector<sf::Text>> updateExistingFields(std::vector<std::vector<sf::Text>> Symbols, TicTacToe currGame) {
     for (int i = 0; i < BOARD_FIELDS_X; i++) {
         for (int j = 0; j < BOARD_FIELDS_Y; j++) {
-            if (currGame->getFieldState(i,j) == EMPTY) Symbols[i][j].setString("");
-            if (currGame->getFieldState(i,j) == Xmark) Symbols[i][j].setString("X");
-            if (currGame->getFieldState(i,j) == Omark) Symbols[i][j].setString("O"); 
+            if (currGame.getFieldState(i,j) == EMPTY) Symbols[i][j].setString("");
+            if (currGame.getFieldState(i,j) == Xmark) Symbols[i][j].setString("X");
+            if (currGame.getFieldState(i,j) == Omark) Symbols[i][j].setString("O"); 
         }
     }
     return Symbols;
