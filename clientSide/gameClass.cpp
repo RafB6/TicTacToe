@@ -1,21 +1,7 @@
 #include <vector>
 #include <iostream>
 #include "gameClass.hpp"
-
-//VERTICALS
-#define TOP 0
-#define MIDDLE 1
-#define BOTTOM 2
-
-// HORIZONTALS
-#define LEFT 0
-#define CENTER 1
-#define RIGHT 2
-
-//FIELD STATE
-#define EMPTY 0
-#define Xmark 1
-#define Omark 2
+#include "definitions.cpp"
 
 TicTacToe::TicTacToe() {
     std::vector<std::vector<int>> newLogicBoard(3, std::vector<int>(3,0));
@@ -60,7 +46,13 @@ int TicTacToe::hasWinner() {
     if(this->logicBoard[TOP][RIGHT] == Omark && this->logicBoard[MIDDLE][RIGHT] == Omark && this->logicBoard[BOTTOM][RIGHT] == Omark) return Omark;
     if(this->logicBoard[TOP][LEFT] == Omark && this->logicBoard[MIDDLE][CENTER] == Omark && this->logicBoard[BOTTOM][RIGHT] == Omark) return Omark;
     if(this->logicBoard[TOP][RIGHT] == Omark && this->logicBoard[MIDDLE][CENTER] == Omark && this->logicBoard[BOTTOM][LEFT] == Omark) return Omark;    
-    return 0;
+    
+    for (int i = 0; i < BOARD_FIELDS_X; i++) {
+        for (int j = 0; j < BOARD_FIELDS_Y; j++) {
+            if (this->logicBoard[i][j] == EMPTY) return 0;
+        }
+    }
+    return TIE;
 }
 
 void TicTacToe::setWinner(char newWinner) {

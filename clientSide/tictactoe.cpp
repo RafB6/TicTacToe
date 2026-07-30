@@ -127,6 +127,10 @@ int main(void) {
                     if (winner) {                        
                         if (winner == Xmark) GAME.updateXwins();
                         else if (winner == Omark) GAME.updateOwins();
+                        else if (winner == TIE) {
+                            GAME.updateOwins();
+                            GAME.updateXwins();
+                        }
                         winnerDeclarationBackground = createMessageBackground();
                         winnerDeclarationMessage = createEndMessage(winner, &winnerDeclarationBackground, font);
                         GAME.clearBoard();

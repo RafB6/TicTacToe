@@ -55,8 +55,9 @@ sf::RectangleShape createMessageBackground() {
 sf::Text createEndMessage(int winner, sf::RectangleShape *messageBackground, const sf::Font &font) {
     
     std::string winnerMessageContent;
-    if (winner == 1) winnerMessageContent = "Winner: X\n(right-click for new game)";
-    else if (winner == 2) winnerMessageContent = "Winner: O\n(right-click for new game)";
+    if (winner == Xmark) winnerMessageContent = "Winner: X\n(right-click for new game)";
+    else if (winner == Omark) winnerMessageContent = "Winner: O\n(right-click for new game)";
+    else if (winner == TIE) winnerMessageContent = "TIE\n(right-click for new game)";
     else winnerMessageContent = "";
     
     sf::Text winnerMessage(winnerMessageContent, font, END_FONT_SIZE);

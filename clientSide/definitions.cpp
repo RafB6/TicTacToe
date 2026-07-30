@@ -16,6 +16,8 @@
 #define Xmark 1
 #define Omark 2
 
+#define TIE 3
+
 #define END_FONT_SIZE 30
 #define FONT_SIZE 80
 
