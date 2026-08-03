@@ -27,8 +27,7 @@ bool clickOntoField(int xclick, int yclick, sf::RectangleShape currField) {
 sf::Text createTextOnField(int sign, sf::RectangleShape *currField, const sf::Font &font) {
     char symbol;
     
-    if (sign == Xmark) symbol = 'X'; 
-    else symbol = 'O';
+    (sign == Xmark) ? symbol = 'X' : symbol = 'O';
 
     sf::Text newText(symbol, font, FONT_SIZE);
     sf::FloatRect textBounds = newText.getLocalBounds();

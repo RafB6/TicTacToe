@@ -98,6 +98,9 @@ int main(void) {
             if (event.type == sf::Event::MouseButtonPressed) {
                 //handling of LMB
                 if(event.mouseButton.button == sf::Mouse::Left) {
+                    // block clicking a field when winner message is displayed
+                    if (winnerDeclarationMessage.getString() != "") break;
+
                     int xClick = event.mouseButton.x;
                     int yClick = event.mouseButton.y;
                     std::cout << "\t Mouse LEFT pressed: X: " << xClick << "\t"<< yClick << "\n";
