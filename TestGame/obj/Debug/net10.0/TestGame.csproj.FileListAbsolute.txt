@@ -1,0 +1,15 @@
+/home/rafalbialczak/InterPainter/TestGame/bin/Debug/net10.0/TestGame
+/home/rafalbialczak/InterPainter/TestGame/bin/Debug/net10.0/TestGame.deps.json
+/home/rafalbialczak/InterPainter/TestGame/bin/Debug/net10.0/TestGame.runtimeconfig.json
+/home/rafalbialczak/InterPainter/TestGame/bin/Debug/net10.0/TestGame.dll
+/home/rafalbialczak/InterPainter/TestGame/bin/Debug/net10.0/TestGame.pdb
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.GeneratedMSBuildEditorConfig.editorconfig
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.AssemblyInfoInputs.cache
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.AssemblyInfo.cs
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.csproj.CoreCompileInputs.cache
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.sourcelink.json
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.dll
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/refint/TestGame.dll
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.pdb
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/TestGame.genruntimeconfig.cache
+/home/rafalbialczak/InterPainter/TestGame/obj/Debug/net10.0/ref/TestGame.dll
